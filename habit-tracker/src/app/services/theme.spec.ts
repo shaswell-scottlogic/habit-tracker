@@ -1,12 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 import { ThemeService } from './theme';
 import { Theme } from '../utils/Theme';
+  import { provideZonelessChangeDetection } from '@angular/core';
 
 describe('Theme', () => {
   let service: ThemeService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [],
+      providers: [provideZonelessChangeDetection()]
+    }).compileComponents();
+    
     service = TestBed.inject(ThemeService);
   });
 
