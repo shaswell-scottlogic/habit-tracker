@@ -1,8 +1,10 @@
 
-<main class="main">
-  <div class="content">
+<main class="main" [ngClass]="themeService.getTheme()">
+  <div>
     Quack
   </div>
+  <app-thingy>
+  </app-thingy>
 </main>
 
 <router-outlet />
