@@ -6,13 +6,13 @@ import { ThemeService } from '../../services/theme';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
-  selector: 'app-thingy',
+  selector: 'app-header',
   standalone: true,
   imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatSlideToggleModule],
-  templateUrl: './thingy.html',
-  styleUrl: './thingy.scss'
+  templateUrl: './header.html',
+  styleUrl: './header.scss'
 })
-export class Thingy {
+export class Header {
   themeService: ThemeService = inject(ThemeService);
 
   onThemeToggle() {

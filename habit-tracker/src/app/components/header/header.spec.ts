@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Thingy } from './thingy';
+import { Header } from './header';
 import { provideZonelessChangeDetection } from '@angular/core';
 
-describe('Thingy', () => {
-  let component: Thingy;
-  let fixture: ComponentFixture<Thingy>;
+describe('header', () => {
+  let component: Header;
+  let fixture: ComponentFixture<Header>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Thingy],
+      imports: [Header],
       providers: [provideZonelessChangeDetection()]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Thingy);
+    fixture = TestBed.createComponent(Header);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
