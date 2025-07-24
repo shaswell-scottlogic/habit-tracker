@@ -21,10 +21,20 @@ const gridRoute = {
     title: 'Grid'
 }
 
+const habitRoute = {
+    path: 'habit/:id',
+    loadComponent: () => import('./components/habit/habit').then(m => m.Habit),
+    title: 'Habit', // todo: make a getter that gets a name
+    children: [
+        blobRoute,
+        gridRoute
+    ]
+}
+
 const nopeRoute = {
     path: '**',
     component: Nope,
     title: 'Here be dragons'
 }
 
-export const routes: Routes = [blobRoute, gridRoute, homeRoute, nopeRoute];
+export const routes: Routes = [habitRoute, homeRoute, nopeRoute];
