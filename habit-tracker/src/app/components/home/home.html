@@ -1,2 +1,6 @@
 <p>Welcome!</p>
 // can I dynamically generate links to other routes?
+
+@for (habitId of (habitIds | async); track habitIds) {
+    <a routerLink="/habit/{{habitId}}">Habit {{habitId}}</a>
+}
