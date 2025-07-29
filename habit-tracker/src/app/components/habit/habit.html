@@ -1,7 +1,8 @@
 <h1>HABIT: {{habit()?.name}}</h1>
 <div class="habit-info">
-    <pre>{{id$ | async}}</pre>
+    <!-- <pre>{{id$ | async}}</pre>
     <pre>{{habit()?.name}}</pre>
-    <pre>{{habit()?.daysCompleted}}</pre>
+    <pre>{{habit()?.daysCompleted}}</pre> -->
+    <span>You're {{judgement()}}</span>
 </div>
 <router-outlet />
