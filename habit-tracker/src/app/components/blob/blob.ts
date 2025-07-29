@@ -11,7 +11,7 @@ export class Blob {
   @Input() complete: boolean | undefined;
   icon = computed(() => {
     if(this.complete) return 'circle';
-    if(this.complete === false) return 'block';
-    else return 'bubble_chart'
+    if(this.complete === false) return 'close';
+    else return 'radio_button_unchecked'
   });
 }
