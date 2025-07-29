@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
@@ -8,5 +8,10 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './blob.scss'
 })
 export class Blob {
-
+  @Input() complete: boolean | undefined;
+  icon = computed(() => {
+    if(this.complete) return 'circle';
+    if(this.complete === false) return 'block';
+    else return 'bubble_chart'
+  });
 }

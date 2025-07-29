@@ -1,2 +1,6 @@
-<p>blob-view works!</p>
-<app-blob></app-blob>
+<div class="view">
+    <p>blob-view!</p>
+    @for (slot of slots; track slot.date) {
+        <app-blob [complete]="slot.complete"></app-blob>
+    }
+</div>

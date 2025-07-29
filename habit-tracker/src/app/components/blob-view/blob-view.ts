@@ -8,5 +8,11 @@ import { Blob } from '../blob/blob';
   styleUrl: './blob-view.scss'
 })
 export class BlobView {
-
+  slots = [
+    { complete: true, date: new Date() },
+    { complete: false, date: new Date() },
+    { complete: true, date: new Date() },
+    { complete: false, date: new Date() },
+    { date: new Date() },
+  ];
 }
