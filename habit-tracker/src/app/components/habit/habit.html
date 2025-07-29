@@ -1,2 +1,7 @@
-<h1>HABIT</h1>
+<h1>HABIT: {{habit()?.name}}</h1>
+<div class="habit-info">
+    <pre>{{id$ | async}}</pre>
+    <pre>{{habit()?.name}}</pre>
+    <pre>{{habit()?.daysCompleted}}</pre>
+</div>
 <router-outlet />

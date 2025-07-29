@@ -25,6 +25,6 @@ export class HabitService {
 
   // TODO: use httpResource?
   private retrieveHabit(id: number) {
-    return of({ name: 'Janet', daysCompleted: [new Date()] });
+    return of({ name: 'Sleep all day', daysCompleted: [new Date()] });
   }
 }
