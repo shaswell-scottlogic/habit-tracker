@@ -1,8 +1,9 @@
 <h1>HABIT: {{habit()?.name}}</h1>
 <div class="habit-info">
-    <!-- <pre>{{id$ | async}}</pre>
+    <pre>{{id}}</pre><!-- 
     <pre>{{habit()?.name}}</pre>
     <pre>{{habit()?.daysCompleted}}</pre> -->
     <span>You're {{judgement()}}</span>
 </div>
+// this router outlet could be a mat-tab-group instead
 <router-outlet />

@@ -4,10 +4,10 @@ import { HabitService } from '../../services/habit-service';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
-  selector: 'app-habit',
+  selector: 'app-habit-view',
   imports: [RouterOutlet],
-  templateUrl: './habit.html',
-  styleUrl: './habit.scss'
+  templateUrl: './habit-view.html',
+  styleUrl: './habit-view.scss'
 })
 export class HabitView {
   habitService = inject(HabitService);
