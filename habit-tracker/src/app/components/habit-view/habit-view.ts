@@ -1,11 +1,13 @@
 import { Component, computed, inject, Input } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { HabitService } from '../../services/habit-service';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { MatTab, MatTabGroup } from '@angular/material/tabs';
+import { BlobView } from "../blob-view/blob-view";
+import { GridView } from "../grid-view/grid-view";
 
 @Component({
   selector: 'app-habit-view',
-  imports: [RouterOutlet],
+  imports: [MatTabGroup, MatTab, BlobView, GridView],
   templateUrl: './habit-view.html',
   styleUrl: './habit-view.scss'
 })

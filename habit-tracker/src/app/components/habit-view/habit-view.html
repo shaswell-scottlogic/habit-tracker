@@ -5,5 +5,11 @@
     <pre>{{habit()?.daysCompleted}}</pre> -->
     <span>You're {{judgement()}}</span>
 </div>
-// this router outlet could be a mat-tab-group instead
-<router-outlet />
+<mat-tab-group>
+  <mat-tab label="Blob View"> 
+    <app-blob-view></app-blob-view>
+  </mat-tab>
+  <mat-tab label="Grid View">
+    <app-grid-view></app-grid-view>
+  </mat-tab>
+</mat-tab-group>
