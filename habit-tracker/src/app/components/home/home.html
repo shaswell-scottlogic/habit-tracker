@@ -1,6 +1,8 @@
-<p>Welcome!</p>
-// can I dynamically generate links to other routes?
-
-@for (habitId of (habitIds | async); track habitIds) {
-    <a routerLink="/habit/{{habitId}}">Habit {{habitId}}</a>
-}
+<div class="view">
+    <p>Welcome!</p>
+    <br>
+    @for (habitId of (habitIds | async); track habitIds) {
+        <a class="habitLink" routerLink="/habit/{{habitId}}/{{layoutService.getLayout()}}">Habit {{habitId}}</a>
+        <br>
+    }
+</div>
