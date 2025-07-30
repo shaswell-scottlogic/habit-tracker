@@ -1,11 +1,9 @@
 @use "@angular/material" as mat;
 
 .dark {
-    color: aliceblue;
-    background-color: darkslategrey;
+    color-scheme: dark;
 }
 
 .light {
-    color: navy;
-    background-color: mintcream;
+    color-scheme: light;
 }
