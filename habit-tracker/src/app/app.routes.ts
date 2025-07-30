@@ -23,7 +23,7 @@ const gridRoute = {
 
 const habitRoute = {
     path: 'habit/:id',
-    loadComponent: () => import('./components/habit/habit').then(m => m.HabitView),
+    loadComponent: () => import('./components/habit-view/habit-view').then(m => m.HabitView),
     title: 'Habit', // todo: make a getter that gets a name
     children: [
         blobRoute,
