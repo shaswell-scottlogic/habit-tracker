@@ -4,13 +4,15 @@
 
 .habit-info {
   margin: 2px;
-  background-color: palevioletred;
+  // background-color: palevioletred;
+  
   padding: 4px;
 }
 
 mat-tab-group {
-  outline-style: dotted;
-  background-color: greenyellow;
+  border-style: dotted;
+  border-color: darkorchid;
+  // background-color: greenyellow;
   margin: 2px;
 
 }

@@ -29,5 +29,6 @@ html, body { height: 100%; }
 body { margin: 0; font-family: "Garamond", "Georgia", serif; }
 
 .view {
-  outline-style: dashed;
+  border-style: dotted;
+  border-color: var(--mat-sys-on-surface)
 }
