@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Habit } from '../models/habit';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { HabitPattern } from '../models/HabitPattern';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,11 @@ export class HabitService {
   }
 
   // TODO: use httpResource?
-  private retrieveHabit(id: number) {
-    return of({ name: 'Sleep all day', daysCompleted: [new Date(), new Date(), new Date(), new Date(), new Date(), new Date()] });
+  private retrieveHabit(id: number): Observable<Habit> {
+    return of({
+      name: 'Sleep all day',
+      daysCompleted: [new Date("2025-07-14"), new Date("2025-07-15"), new Date("2025-07-16"), new Date("2025-07-17"), new Date("2025-07-18"), new Date("2025-07-20")],
+      pattern: HabitPattern.DAILY
+    });
   }  
 }

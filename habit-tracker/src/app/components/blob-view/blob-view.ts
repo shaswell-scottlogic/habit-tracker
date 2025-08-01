@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, Signal } from '@angular/core';
 import { Blob } from '../blob/blob';
 import { HabitService } from '../../services/habit-service';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -13,16 +13,15 @@ export class BlobView {
   // TOOD: consider making this dumber - have habit level own data
   habitService = inject(HabitService);
 
-  @Input() id!: number;
-  slotData =  toSignal(this.habitService.getHabit(this.id));
-  
+  @Input() slotData: Slot[] = [];
+
   // TODO:
   // get habit ID as input
   // get habit data from service
   // convert it to slot data
   // then bulk it out - computed?
 
-  slots = [
+  slots: Slot[] = [
     { complete: true, date: new Date() },
     { complete: false, date: new Date() },
     { complete: true, date: new Date() },
@@ -32,11 +31,11 @@ export class BlobView {
     { complete: true, date: new Date() },
     { complete: true, date: new Date() },
     { complete: true, date: new Date() },
-    { date: new Date() },
-    { date: new Date() },
-    { date: new Date() },
-    { date: new Date() },
-    { date: new Date() },
+    { date: new Date() } as Slot,
+    { date: new Date() } as Slot,
+    { date: new Date() } as Slot,
+    { date: new Date() } as Slot,
+    { date: new Date() } as Slot,
   ];
 
   

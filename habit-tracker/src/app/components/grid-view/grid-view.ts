@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './grid-view.scss'
 })
 export class GridView {
-  @Input() id!: number;
+  @Input() slotData: Slot[] = [];
 }
