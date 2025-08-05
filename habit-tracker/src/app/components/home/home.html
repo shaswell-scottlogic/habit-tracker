@@ -1,7 +1,7 @@
 <div class="view">
     <p>Welcome!</p>
     <br>
-    @for (habitId of (habitIds | async); track habitIds) {
+    @for (habitId of (habitIds | async); track habitId) {
         <a class="habitLink" routerLink="/habit/{{habitId}}">Habit {{habitId}}</a>
         <br>
     }
