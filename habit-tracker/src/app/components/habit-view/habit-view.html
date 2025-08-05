@@ -1,8 +1,6 @@
-<h1>HABIT: {{habit()?.name}}</h1>
+<h1>Habit: {{habit()?.name}}</h1>
 <div class="habit-info">
-    <pre>{{id}}</pre><!-- 
-    <pre>{{habit()?.name}}</pre>
-    <pre>{{habit()?.daysCompleted}}</pre> -->
+    <p>You wanted to do this {{habit()?.pattern}}</p>
     <span>You're {{judgement()}}</span>
 </div>
 <mat-tab-group>

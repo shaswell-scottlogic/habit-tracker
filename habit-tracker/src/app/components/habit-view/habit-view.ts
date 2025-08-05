@@ -1,10 +1,11 @@
-import { Component, computed, inject, Input } from '@angular/core';
+import { Component, computed, inject, Input, OnInit, signal, WritableSignal } from '@angular/core';
 import { HabitService } from '../../services/habit-service';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { MatTab, MatTabGroup } from '@angular/material/tabs';
 import { BlobView } from "../blob-view/blob-view";
 import { GridView } from "../grid-view/grid-view";
 import { HabitPattern } from '../../models/HabitPattern';
+import { Habit } from '../../models/habit';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-habit-view',
@@ -12,62 +13,84 @@ import { HabitPattern } from '../../models/HabitPattern';
   templateUrl: './habit-view.html',
   styleUrl: './habit-view.scss'
 })
-export class HabitView {
+export class HabitView implements OnInit {
   habitService = inject(HabitService);
 
   @Input() id!: number;
-  habit = toSignal(this.habitService.getHabit(this.id));
+  habit: WritableSignal<Habit | undefined> = signal(undefined);
+  
+  ngOnInit() {
+    console.log('ngOnInit');
+    this.habitService.getHabit(this.id)
+      .pipe(
+        tap(() => console.log('getHabit fired')
+      )
+    ).subscribe((value) => {
+      console.log('habit value');
+      this.habit.set(value);
+    });
+  }
 
   slotData = computed(() => {
-    // TODO: add util that fills in dates between dates
+    console.log('computing');
+    if (!this.habit()) {
+      return [];
+    }
+
+    // TODO: date utils that set everything beyond days to zero?
     const dates = this.habit()?.daysCompleted ?? [];
     dates.sort();
 
-    // const first = dates[0];
-    // const last = dates[dates.length-1];
-
-    // OR, check between now-31 and now
-    // make an array of all the pattern dates and map it to fill in
-    // for each date, if it appears in days completed then true, else false?
-    // grid version... maybe AG grid can do it
 
     const today = new Date();
 
+    // TODO: this doesn't really work for other patterns
+    let dateInPattern;
+    switch (this.habit()?.pattern) {
+      case HabitPattern.DAILY:
+        dateInPattern = (date: Date) => true;        
+        break;
+      default:
+        dateInPattern = (date: Date) => false;
+        break;
+    }
+
     let data: Slot[] = [];
     for (let index = 30; index >= 0; index--) {
-      const indexDate = today;
+      const indexDate = new Date();
+      indexDate.setDate(today.getDate()-index);
+
+      // check if this date has completion marked
+      const dateRecorded = dates.some((habitDate) => 
+        habitDate.getDate() === indexDate.getDate() &&
+        habitDate.getMonth() === indexDate.getMonth() &&
+        habitDate.getFullYear() === indexDate.getFullYear()
+      );
 
       data.push({
-        date: indexDate, // TODO: take off index days
-        complete: dates.includes(indexDate) // TODO: dates won't be exact same?
+        date: indexDate,
+        complete: dateRecorded ?? (dateInPattern(indexDate) ? false : undefined)
       });      
     };
 
-    // now for each date in data...
-    
-    switch (this.habit()?.pattern) {
-      case HabitPattern.DAILY:
-        
-        break;
-    
-      default:
-        // ??
-        break;
-    }
-
-    // get first and last date
-    // calculate from pattern what dates should be in there
-    // check if they are
-    // ignore extras? or put them in anyway
-    return this.habit()?.daysCompleted.map((date) => ({complete: true, date})) ?? [];
+    console.log('slot data');
+    console.log(data);
+    return data;
   });
 
+  // TODO: nuance this - also calculate streak?
   judgement = computed(() => {
-    const days = this.habit()?.daysCompleted;
-    if( days && days.length > 5) {
+    const failDays = this.slotData().filter((slot) => slot.complete === false).length;
+    if (failDays === 0 ) {
       return 'SMASHING IT';
     }
-
+    if (failDays <= 5) {
+      return 'doing well';
+    }
+    if (failDays <= 10
+    ) {
+      return 'doing ok';
+    }
     return 'FAILING HORRIBLY';
   });
 }

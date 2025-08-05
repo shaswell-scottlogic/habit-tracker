@@ -1,5 +1,5 @@
 export enum HabitPattern {
-  DAILY,
-  EVERY_OTHER,
-  EVERY_SEVEN,
+  DAILY = 'daily',
+  EVERY_OTHER = 'every other day',
+  EVERY_SEVEN = 'every week',
 };
