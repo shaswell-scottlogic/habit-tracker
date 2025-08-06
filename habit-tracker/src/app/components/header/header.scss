@@ -1,20 +1,13 @@
-// make the button go on the right
-
 .mat-toolbar {    
     justify-content: space-between;
+
+    h1 {
+        color: #ff44aa;
+        font-size: 50px;
+        font-family: cursive;
+        font-weight: bolder;
+        padding: 3px;
+
+        &:hover { font-size: 72px; }
+    }
 }
-
-// .mat-toolbar-row {
-//     justify-content: space-between;
-// }
-
-
-// mat-toolbar {
-//     display: flex;
-//     flex-direction: row;
-//     width: 100%;
-//     align-items: out;
-// }
-// mat-slide-toggle {
-//     align-self: right;
-// }

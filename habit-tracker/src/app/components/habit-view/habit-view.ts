@@ -16,7 +16,7 @@ import { tap } from 'rxjs';
 export class HabitView implements OnInit {
   habitService = inject(HabitService);
 
-  @Input() id!: number;
+  @Input() id!: string;
   habit: WritableSignal<Habit | undefined> = signal(undefined);
   
   ngOnInit() {

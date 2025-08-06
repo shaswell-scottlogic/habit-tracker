@@ -13,7 +13,7 @@ const emptyHabit: Habit = {
   providedIn: 'root'
 })
 export class HabitService {
-  habits: Record<number, Habit>;
+  habits: Record<string, Habit>;
 
   constructor() {
     this.habits = {
@@ -101,22 +101,30 @@ export class HabitService {
   };
 
   getHabitIds() {
-    return this.retrieveHabitIds();
+    return of(this.retrieveHabitIds());
   }
 
   private retrieveHabitIds() {
-    return of(Object.keys(this.habits));
+    return Object.keys(this.habits);
   }
-;
 
-  getHabit(id: number) {
+  getHabitSummaries() {
+    const ids = this.retrieveHabitIds();
+
+    return ids.map((id) => ({
+      id,
+      name: this.habits[id]
+    }))
+  }
+
+  getHabit(id: string) {
     console.log('get' + id);
     console.log(this.habits);
     return this.habits[id] ? of(this.habits[id]) : this.retrieveHabit(id)
   }
 
   // TODO: use httpResource?
-  private retrieveHabit(id: number): Observable<Habit> {
+  private retrieveHabit(id: string): Observable<Habit> {
     if (this.habits[id]) {
       console.log('habit got');
       return of(this.habits[id]);
