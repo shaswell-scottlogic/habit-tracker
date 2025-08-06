@@ -95,9 +95,6 @@ export class HabitService {
         pattern: HabitPattern.EVERY_SEVEN
       }
     };
-
-    console.log('constructed habit service');
-    console.log(this.habits);
   };
 
   getHabitIds() {
@@ -118,20 +115,15 @@ export class HabitService {
   }
 
   getHabit(id: string) {
-    console.log('get' + id);
-    console.log(this.habits);
     return this.habits[id] ? of(this.habits[id]) : this.retrieveHabit(id)
   }
 
   // TODO: use httpResource?
   private retrieveHabit(id: string): Observable<Habit> {
-    if (this.habits[id]) {
-      console.log('habit got');
+    if (this.habits[id]) {;
       return of(this.habits[id]);
     }
-    else {
-      console.log('habit not got');
-      return of(emptyHabit);
-    }    
+
+    return of(emptyHabit);
   }  
 }

@@ -20,19 +20,13 @@ export class HabitView implements OnInit {
   habit: WritableSignal<Habit | undefined> = signal(undefined);
   
   ngOnInit() {
-    console.log('ngOnInit');
     this.habitService.getHabit(this.id)
-      .pipe(
-        tap(() => console.log('getHabit fired')
-      )
-    ).subscribe((value) => {
-      console.log('habit value');
+    .subscribe((value) => {
       this.habit.set(value);
     });
   }
 
   slotData = computed(() => {
-    console.log('computing');
     if (!this.habit()) {
       return [];
     }
@@ -73,12 +67,11 @@ export class HabitView implements OnInit {
       });      
     };
 
-    console.log('slot data');
-    console.log(data);
     return data;
   });
 
   // TODO: nuance this - also calculate streak?
+  // change depending on pattern
   judgement = computed(() => {
     const failDays = this.slotData().filter((slot) => slot.complete === false).length;
     if (failDays === 0 ) {
