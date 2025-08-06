@@ -2,7 +2,7 @@
     <p>Welcome!</p>
     <br>
     @for (habitId of (habitIds | async); track habitId) {
-        <a class="habitLink" routerLink="/habit/{{habitId}}">Habit {{habitId}}</a>
+        <a class="habitLink" [routerLink]="['/habit/', habitId]">Habit {{habitId}}</a>
         <br>
     }
 </div>
