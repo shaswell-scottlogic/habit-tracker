@@ -3,15 +3,15 @@
 <form>
     <mat-form-field>
         <mat-label>Habit name</mat-label>
-        <input matNativeControl required name ="habitName" [(ngModel)]="enteredName"/>
+        <input matNativeControl required name ="habitName" [formControl]="nameControl"/>
     </mat-form-field>
     <mat-form-field>
         <mat-label>Frequency</mat-label>
-        <mat-select matNativeControl required name="Frequency" [(ngModel)]="selectedFrequency">
+        <mat-select matNativeControl required name="Frequency" [formControl]="frequencyControl">
             @for (frequency of frequencyOptions; track frequency) {
                 <mat-option [value]="frequency">{{frequency}}</mat-option>
             }
         </mat-select>
     </mat-form-field>
 </form>
-<p>You want to {{enteredName === "" ? `do something - what is it?` : `${enteredName}`}} {{ !!selectedFrequency ?  selectedFrequency : "...how often?"}}</p>
+<p>You want to {{nameControl.value === "" ? `do something - what is it?` : `${nameControl.value}`}} {{ !!frequencyControl.value ?  frequencyControl.value : "...how often?"}}</p>
