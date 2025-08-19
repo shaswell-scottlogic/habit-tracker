@@ -2,8 +2,18 @@
 
 .dark {
     color-scheme: dark;
+    background-color: darkmagenta;
+    color: lightcoral;
+    height: 100%;
 }
 
 .light {
     color-scheme: light;
+    background-color: lightcoral;
+    color: var(--mat-sys-on-surface);
+    height: 100%;
+
+    .view p {
+        font-size: 100pt;
+    }
 }
