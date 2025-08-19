@@ -1,2 +1,14 @@
 <p>new-habit works!</p>
 <span>Add a form here; name the habit, select the frequency</span>
+<form>
+    <mat-form-field>
+        <mat-label>Habit name</mat-label>
+        <input matNativeControl name ="habitName" />
+    </mat-form-field>
+    <label>Frequency</label>
+    <select name="Frequency">
+        @for (frequency of frequencyOptions; track frequency) {
+            <option>{{frequency}}</option>
+        }
+    </select>
+</form>
