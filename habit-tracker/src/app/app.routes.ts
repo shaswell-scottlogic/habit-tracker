@@ -14,10 +14,17 @@ const habitRoute = {
     title: 'Habit', // todo: make a getter that gets a name
 }
 
+const newRoute = {
+    path: 'new',
+    loadComponent: () => import('./components/new-habit/new-habit').then(m => m.NewHabit),
+    title: 'New Habit'
+}
+
 const nopeRoute = {
     path: '**',
     component: Nope,
     title: 'Here be dragons'
 }
 
-export const routes: Routes = [habitRoute, homeRoute, nopeRoute];
+// ORDER OF ROUTES MATTERS
+export const routes: Routes = [habitRoute, homeRoute, newRoute, nopeRoute];
