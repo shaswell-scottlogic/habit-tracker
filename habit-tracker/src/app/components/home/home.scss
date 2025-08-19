@@ -2,7 +2,16 @@
     padding: 1px;
 }
 
+.view {
+    display: flex;
+    flex-direction: column;
+}
+
 .view p {
     font-size: large;
     color: green;
+}
+
+.newHabitLink {
+    padding: 2px;
 }

@@ -1,14 +1,13 @@
 <div class="view">
     <p>Welcome!</p>
-    <br>
     @for (habitId of (habitIds | async); track habitId) {
         <a class="habitLink" [routerLink]="['/habit/', habitId]">Habit {{habitId}}</a>
-        <br>
+
     }
-    <br>
-    <a aria-label="New habit" routerLink="/new">
-        <mat-icon>add</mat-icon>
-        Add New
+    <a class="newHabitLink" aria-label="New habit" routerLink="/new">
+        <button>
+            <mat-icon>add</mat-icon>
+            Add New Habit
+        </button>
     </a>
-    <br>
 </div>
