@@ -3,7 +3,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HabitPattern } from '../../models/HabitPattern';
 import { MatSelectModule } from '@angular/material/select';
-import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-new-habit',
@@ -16,4 +16,10 @@ export class NewHabit {
 
   nameControl = new FormControl<string>("", Validators.required);
   frequencyControl = new FormControl<HabitPattern | null>(null, Validators.required);
+
+  // can just create controls inside group directly
+  newHabitForm = new FormGroup({
+    name: this.nameControl,
+    frequency: this.frequencyControl
+  });
 }

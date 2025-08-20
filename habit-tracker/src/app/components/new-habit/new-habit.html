@@ -1,17 +1,20 @@
-<p>new-habit works!</p>
-<span>Add a form here; name the habit, select the frequency</span>
-<form>
-    <mat-form-field>
-        <mat-label>Habit name</mat-label>
+
+<form [formGroup]="newHabitForm">
+    <h2>Create a new habit to track</h2>
+    <mat-form-field [appearance]="'outline'">
+        <mat-hint>What do you want to do?</mat-hint>
+        <span matTextPrefix>I want to...</span>
         <input matNativeControl required name ="habitName" [formControl]="nameControl"/>
     </mat-form-field>
     <mat-form-field>
         <mat-label>Frequency</mat-label>
+        <mat-hint>How often do you want to do it?</mat-hint>
         <mat-select matNativeControl required name="Frequency" [formControl]="frequencyControl">
             @for (frequency of frequencyOptions; track frequency) {
                 <mat-option [value]="frequency">{{frequency}}</mat-option>
             }
         </mat-select>
+        <mat-error>AAAAAAAA</mat-error>
     </mat-form-field>
 </form>
 <p>You want to {{nameControl.value === "" ? `do something - what is it?` : `${nameControl.value}`}} {{ !!frequencyControl.value ?  frequencyControl.value : "...how often?"}}</p>
