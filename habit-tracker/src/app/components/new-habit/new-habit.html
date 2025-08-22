@@ -1,5 +1,5 @@
 
-<form [formGroup]="newHabitForm">
+<form [formGroup]="newHabitForm" (ngSubmit)="onSubmit()">
     <h2>Create a new habit to track</h2>
     <mat-form-field [appearance]="'outline'">
         <mat-hint>What do you want to do?</mat-hint>
@@ -9,12 +9,13 @@
     <mat-form-field>
         <mat-label>Frequency</mat-label>
         <mat-hint>How often do you want to do it?</mat-hint>
-        <mat-select matNativeControl required name="Frequency" [formControl]="frequencyControl">
+        <select matNativeControl required name="Frequency" [formControl]="frequencyControl" panelClass="snazzpanel">
             @for (frequency of frequencyOptions; track frequency) {
-                <mat-option [value]="frequency">{{frequency}}</mat-option>
+                <option [value]="frequency">{{frequency}}</option>
             }
-        </mat-select>
+        </select>
         <mat-error>AAAAAAAA</mat-error>
     </mat-form-field>
+    <button>Add</button>
 </form>
 <p>You want to {{nameControl.value === "" ? `do something - what is it?` : `${nameControl.value}`}} {{ !!frequencyControl.value ?  frequencyControl.value : "...how often?"}}</p>

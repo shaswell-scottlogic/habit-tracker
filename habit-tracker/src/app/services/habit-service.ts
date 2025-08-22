@@ -118,6 +118,20 @@ export class HabitService {
     return this.habits[id] ? of(this.habits[id]) : this.retrieveHabit(id)
   }
 
+  addHabit(name: string, pattern: HabitPattern) {
+    // NO - need to check if text of name already exists in a habit
+    // this only incidentally works
+    if (!!this.habits[name]) {
+      alert('HOW DARE');
+    } else {
+      this.habits[name] = {
+        name,
+        daysCompleted: [],
+        pattern
+      };
+    }
+  }
+
   // TODO: use httpResource?
   private retrieveHabit(id: string): Observable<Habit> {
     if (this.habits[id]) {;

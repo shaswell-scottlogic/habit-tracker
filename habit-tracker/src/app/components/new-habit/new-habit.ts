@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HabitPattern } from '../../models/HabitPattern';
 import { MatSelectModule } from '@angular/material/select';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { HabitService } from '../../services/habit-service';
 
 @Component({
   selector: 'app-new-habit',
@@ -12,6 +13,7 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
   styleUrl: './new-habit.scss'
 })
 export class NewHabit {
+  habitService = inject(HabitService);
   frequencyOptions = [HabitPattern.DAILY, HabitPattern.EVERY_OTHER, HabitPattern.EVERY_SEVEN];
 
   nameControl = new FormControl<string>("", Validators.required);
@@ -22,4 +24,14 @@ export class NewHabit {
     name: this.nameControl,
     frequency: this.frequencyControl
   });
+
+  onSubmit() {
+    // TODO: Use EventEmitter with form value
+    console.warn(this.newHabitForm.value);
+    if (!!this.nameControl.value && !!this.frequencyControl.value) {
+      this.habitService.addHabit(this.nameControl.value, this.frequencyControl.value);
+    } else {
+      alert('NO');
+    }
+  }
 }
